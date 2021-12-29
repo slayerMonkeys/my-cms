@@ -17,3 +17,12 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/post/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
+
+Route::middleware('auth')->group(function() {
+
+    Route::prefix('admin')->group(function() {
+        Route::get('/', [App\Http\Controllers\AdminsController::class, 'index'])->name('admin.index');
+    });
+
+});
+
