@@ -25,7 +25,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <x-navigations.menu title="Posts" icon="fas fa-fw fa-cog">
         <h6 class="collapse-header">manage post:</h6>
-        <a class="collapse-item" href="buttons.html">Create a Post</a>
+        <a class="collapse-item" href="{{ route("post.create") }}">Create a Post</a>
         <a class="collapse-item" href="cards.html">Cards</a>
     </x-navigations.menu>
 
