@@ -26,7 +26,7 @@
     <x-navigations.menu title="Posts" icon="fas fa-fw fa-cog">
         <h6 class="collapse-header">manage post:</h6>
         <a class="collapse-item" href="{{ route("post.create") }}">Create a Post</a>
-        <a class="collapse-item" href="cards.html">Cards</a>
+        <a class="collapse-item" href="{{ route("post.index") }}">View All Posts</a>
     </x-navigations.menu>
 
     <!-- Divider -->
