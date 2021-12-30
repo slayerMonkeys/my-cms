@@ -1,8 +1,17 @@
 <x-admin-master>
     <x-slot name="styles">
-        <link href="{{ asset("vendor/datatables/dataTables.bootstrap4.min.css") }}" rel="stylesheet">
+        <link href="{{ asset("vendor/datatables/dataTables.min.css") }}" rel="stylesheet">
     </x-slot>
     <h1>All Posts</h1>
+
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -34,7 +43,9 @@
                                 <td class="d-flex justify-content-center align-items-center">
                                     <a class="m-2 btn btn-primary" href="{{ route("post.show", $post) }}"><i class="fas fa-eye"></i></a>
                                     <a class="m-2 btn btn-warning" href="#"><i class="fas fa-pen"></i></a>
-                                    <a class="m-2 btn btn-danger" href="#"><i class="fas fa-trash-alt"></i></a>
+                                    <button class="m-2 btn btn-danger" type="button" id="showModalButton" data-toggle="modal" data-target="#postDeleteModal" data-view="{{ route("post.delete", $post) }}">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -43,10 +54,22 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="postDeleteModal" tabindex="-1" role="dialog" aria-labelledby="postDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postDeleteModalLabel">Do you want to delete this post ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Delete" below if you want to delete the post.</div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
     <x-slot name="scripts">
-        <script src="{{ asset("vendor/datatables/jquery.dataTables.min.js") }}"></script>
-        <script src="{{ asset("vendor/datatables/dataTables.bootstrap4.min.js") }}"></script>
+        <script src="{{ asset("vendor/datatables/dataTables.min.js") }}"></script>
 
         <script src="{{ asset("js/demo/datatables-demo.js") }}"></script>
     </x-slot>

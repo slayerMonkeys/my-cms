@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -25,7 +27,7 @@ class PostController extends Controller
         return view("posts.create");
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $payload = $request->validate([
             'title' => 'required|min:8|max:255',
@@ -39,7 +41,25 @@ class PostController extends Controller
 
         Auth::user()->posts()->create($payload);
 
-        return back();
+        return redirect()
+            ->route('post.index')
+            ->with([
+            'success' => 'Post was created'
+        ]);
 
+    }
+
+    public function delete(Post $post)
+    {
+        return view("posts.delete", compact('post'));
+    }
+
+    public function destroy(Post $post): RedirectResponse
+    {
+        $post->delete();
+
+        Session::flash('success', 'Post was deleted');
+
+        return back();
     }
 }
