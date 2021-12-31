@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
-class PostController extends Controller
+class PostsController extends Controller
 {
     public function __construct()
     {

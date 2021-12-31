@@ -41,7 +41,7 @@
                                 <td>{{ $post->created_at }}</td>
                                 <td>{{ $post->updated_at }}</td>
                                 <td class="d-flex justify-content-center align-items-center">
-                                    <a class="m-2 btn btn-primary" href="{{ route("post.show", $post) }}"><i class="fas fa-eye"></i></a>
+                                    <a class="m-2 btn btn-primary" href="{{ route("posts.show", $post) }}"><i class="fas fa-eye"></i></a>
                                     <a
                                         @class([
                                             'm-2',
@@ -50,7 +50,7 @@
                                             'btn-secondary' => Auth::user()->cannot('update', $post),
                                             'disabled' => Auth::user()->cannot('update', $post)
                                         ])
-                                        href="{{ route("post.edit", $post) }}"
+                                        href="{{ route("posts.edit", $post) }}"
                                     >
                                         <i class="fas fa-pen"></i>
                                     </a>
@@ -66,7 +66,7 @@
                                         id="showModalButton"
                                         data-toggle="modal"
                                         data-target="#postDeleteModal"
-                                        data-view="{{ route("post.delete", $post) }}"
+                                        data-view="{{ route("posts.delete", $post) }}"
                                     >
                                         <i class="fas fa-trash-alt"></i>
                                     </button>

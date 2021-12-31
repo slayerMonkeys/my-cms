@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,14 +17,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/post/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
+Route::get('/posts/{post}', [PostsController::class, 'show'])->name('posts.show');
 
 Route::middleware('auth')->group(function() {
 
     Route::prefix('admin')->group(function() {
         Route::get('/', [App\Http\Controllers\AdminsController::class, 'index'])->name('admin.index');
-        Route::resource('post', \App\Http\Controllers\PostController::class)->except('show');
-        Route::get('/post/{post}', [App\Http\Controllers\PostController::class, 'delete'])->name('post.delete');
+        Route::resource('posts', PostsController::class)->except('show');
+        Route::get('/posts/{post}', [PostsController::class, 'delete'])->name('posts.delete');
 
     });
 

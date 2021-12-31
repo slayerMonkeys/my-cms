@@ -1,4 +1,4 @@
-<form method="post" action="{{ route("post.destroy", $post) }}" enctype="multipart/form-data">
+<form method="post" action="{{ route("posts.destroy", $post) }}" enctype="multipart/form-data">
     @method("DELETE")
     @csrf
     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>

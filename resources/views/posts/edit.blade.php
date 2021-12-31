@@ -1,7 +1,7 @@
 <x-admin-master>
     <h1>Edit a post</h1>
 
-    <form class="d-flex flex-column" method="post" action="{{ route("post.update", $post) }}" enctype="multipart/form-data">
+    <form class="d-flex flex-column" method="post" action="{{ route("posts.update", $post) }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <x-forms.input id="title" label="Title" type="text" placeholder="Enter title">
