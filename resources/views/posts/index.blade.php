@@ -42,8 +42,32 @@
                                 <td>{{ $post->updated_at }}</td>
                                 <td class="d-flex justify-content-center align-items-center">
                                     <a class="m-2 btn btn-primary" href="{{ route("post.show", $post) }}"><i class="fas fa-eye"></i></a>
-                                    <a class="m-2 btn btn-warning" href="#"><i class="fas fa-pen"></i></a>
-                                    <button class="m-2 btn btn-danger" type="button" id="showModalButton" data-toggle="modal" data-target="#postDeleteModal" data-view="{{ route("post.delete", $post) }}">
+                                    <a
+                                        @class([
+                                            'm-2',
+                                            'btn',
+                                            'btn-warning' => Auth::user()->can('update', $post),
+                                            'btn-secondary' => Auth::user()->cannot('update', $post),
+                                            'disabled' => Auth::user()->cannot('update', $post)
+                                        ])
+                                        href="{{ route("post.edit", $post) }}"
+                                    >
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <button
+                                        @class([
+                                            'm-2',
+                                            'btn',
+                                            'btn-danger'=> Auth::user()->can('delete', $post),
+                                            'btn-secondary' => Auth::user()->cannot('delete', $post),
+                                            'disabled' => Auth::user()->cannot('delete', $post)
+                                        ])
+                                        type="button"
+                                        id="showModalButton"
+                                        data-toggle="modal"
+                                        data-target="#postDeleteModal"
+                                        data-view="{{ route("post.delete", $post) }}"
+                                    >
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
@@ -54,6 +78,7 @@
             </div>
         </div>
     </div>
+    @can('delete', $post)
     <div class="modal fade" id="postDeleteModal" tabindex="-1" role="dialog" aria-labelledby="postDeleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -68,6 +93,7 @@
             </div>
         </div>
     </div>
+    @endcan
     <x-slot name="scripts">
         <script src="{{ asset("vendor/datatables/dataTables.min.js") }}"></script>
 

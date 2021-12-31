@@ -7,7 +7,7 @@
             id="{{ $id }}"
             cols="{{ $attributes->get('cols') }}"
             rows="{{ $rows }}"
-        ></textarea>
+        >@isset($slot){{ $slot }}@endisset</textarea>
     @elseif ($attributes->get('type') === "file")
         <input type="file"
                name="{{ $id }}"
