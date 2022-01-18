@@ -19,14 +19,11 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/posts/{post}', [PostsController::class, 'show'])->name('posts.show');
 
-Route::middleware('auth')->group(function() {
-
-    Route::prefix('admin')->group(function() {
-        Route::get('/', [App\Http\Controllers\AdminsController::class, 'index'])->name('admin.index');
-        Route::resource('posts', PostsController::class)->except('show');
-        Route::get('/posts/{post}', [PostsController::class, 'delete'])->name('posts.delete');
+Route::middleware('auth')->prefix('admin')->group(function() {
+    Route::get('/', [App\Http\Controllers\AdminsController::class, 'index'])->name('admin.index');
+    Route::resource('posts', PostsController::class)->except('show');
+    Route::get('/posts/{post}', [PostsController::class, 'delete'])->name('posts.delete');
 
     });
-
 });
 

@@ -1,4 +1,4 @@
-<x-home-master>
+<x-layout>
     <!-- Title -->
     <h1 class="mt-4">{{ $post->title }}</h1>
 
@@ -71,4 +71,4 @@
 
             </div>
         </div>
-</x-home-master>
+</x-layout>

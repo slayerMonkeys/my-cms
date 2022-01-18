@@ -1,4 +1,4 @@
-<x-admin-master>
+<x-admin.layout>
     <x-slot name="styles">
         <link href="{{ asset("vendor/datatables/dataTables.min.css") }}" rel="stylesheet">
     </x-slot>
@@ -99,4 +99,4 @@
 
         <script src="{{ asset("js/demo/datatables-demo.js") }}"></script>
     </x-slot>
-</x-admin-master>
+</x-admin.layout>

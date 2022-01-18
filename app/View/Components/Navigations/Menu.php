@@ -17,6 +17,6 @@ class Menu extends Component
 
     public function render()
     {
-        return view("components.navigations.menu");
+        return view("components.admin.navigations.menu");
     }
 }

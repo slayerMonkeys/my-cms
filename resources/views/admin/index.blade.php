@@ -1,3 +1,3 @@
-<x-admin-master>
+<x-admin.layout>
 
-</x-admin-master>
+</x-admin.layout>

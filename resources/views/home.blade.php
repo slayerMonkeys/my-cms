@@ -1,4 +1,4 @@
-<x-home-master>
+<x-layout>
         <h1 class="my-4">Page Heading
             <small>Secondary Text</small>
         </h1>
@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <h2 class="card-title">{{ $post->title }}</h2>
                     <p class="card-text">{{ Str::limit($post->body, '50', '.....') }}</p>
-                    <a href="{{ route('post.show', $post) }}" class="btn btn-primary">Read More &rarr;</a>
+                    <a href="{{ route('posts.show', $post) }}" class="btn btn-primary">Read More &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                     Posted on {{ $post->created_at->diffForHumans() }}
@@ -26,6 +26,6 @@
                 <a class="page-link" href="#">Newer &rarr;</a>
             </li>
         </ul>
-</x-home-master>
+</x-layout>
 
 

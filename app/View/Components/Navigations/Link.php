@@ -19,6 +19,6 @@ class Link extends Component
 
     public function render()
     {
-        return view('components.navigations.link');
+        return view('components.admin.navigations.link');
     }
 }
