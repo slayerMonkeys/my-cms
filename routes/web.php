@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,7 @@ Route::middleware('auth')->prefix('admin')->group(function() {
     Route::resource('posts', PostsController::class)->except('show');
     Route::get('/posts/{post}', [PostsController::class, 'delete'])->name('posts.delete');
 
-    });
+    Route::get('/profile', [UserController::class, 'showProfile'])->name('profile.show');
+    Route::post('/profile/change/password', [ChangePasswordController::class, 'handle'])->name('profile.change.password');
 });
 
