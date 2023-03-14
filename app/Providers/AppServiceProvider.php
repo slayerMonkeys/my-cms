@@ -14,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (config('debug')) {
+            $this->register(Barryvdh\Debugbar\ServiceProvider::class);
+        }
     }
 
     /**
