@@ -13,32 +13,32 @@ class Input extends Component
     /**
      * @var string
      */
-    public $id;
+    public string $id;
 
     /**
      * @var string
      */
-    public $label;
+    public string $label;
 
     /**
      * @var string
      */
-    public $type;
+    public string $type;
 
     /**
      * @var string
      */
-    public $placeholder;
+    public string $placeholder;
 
     /**
      * @var integer
      */
-    public $cols;
+    public int $cols;
 
     /**
      * @var integer
      */
-    public $rows;
+    public int $rows;
 
     /**
      * @param string $id
@@ -61,7 +61,7 @@ class Input extends Component
     /**
      * @return Application|Htmlable|Factory|View
      */
-    public function render()
+    public function render(): View|Factory|Htmlable|Application
     {
         return view('components.admin.forms.input');
     }

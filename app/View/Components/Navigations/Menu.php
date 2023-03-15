@@ -6,13 +6,15 @@ use Illuminate\View\Component;
 
 class Menu extends Component
 {
-    public $icon;
-    public $title;
+    public string $icon;
+    public string $title;
+    public bool $isActive;
 
-    public function __construct(string $icon, string $title)
+    public function __construct(string $icon, string $title, bool $isActive = false)
     {
         $this->title = $title;
         $this->icon = $icon;
+        $this->isActive = $isActive;
     }
 
     public function render()
