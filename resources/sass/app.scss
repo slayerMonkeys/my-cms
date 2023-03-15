@@ -6,3 +6,36 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import 'login';
+
+
+.badge-outline-primary {
+    color: $primary;
+    border: 1px solid $primary;
+}
+
+.badge-outline-secondary {
+    color: $secondary;
+    border: 1px solid $secondary;
+}
+
+.badge-outline-info {
+    color: $info;
+    border: 1px solid $info;
+}
+
+.badge-outline-danger {
+    color: $danger;
+    border: 1px solid $danger;
+}
+
+.badge-outline-success {
+    color: $success;
+    border: 1px solid $success;
+}
+
+.badge-outline-warning {
+    color: $warning;
+    border: 1px solid $warning;
+}

@@ -1,51 +1,60 @@
-<x-app class="bg-gradient-primary">
-    <x-slot name="styles">
-        <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
-    </x-slot>
-    <div class="container">
-        <div class="d-flex align-items-center justify-content-center vh-100">
-            <div class="card o-hidden border-0 shadow-lg my-5 w-50">
-                <div class="card-body p-5">
-                    <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                    </div>
-                    <form method="post" action="{{ route('login') }}" class="user">
-                        @csrf
-                        <div class="form-group">
-                            <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus name="email" placeholder="Enter Email Address...">
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox small">
-                                <input type="checkbox" class="custom-control-input" name="remember" id="customCheck" {{ old('remember') ? 'checked' : '' }}>
-                                <label class="custom-control-label" for="customCheck">Remember Me</label>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                            Login
-                        </button>
-                    </form>
-                    <hr>
-                    <div class="text-center">
-                        <a class="small" href="{{ route('register') }}">Create an Account!</a>
-                    </div>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="biweb">
+
+    <title>My CMS - Login</title>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="{{ asset("css/app.css") }}" rel="stylesheet">
+
+</head>
+<body>
+<div class="form-login-container">
+    <form class="form-login" method="POST" action="{{ route('admin.doLogin') }}">
+        @csrf
+
+        <img class="mb-4" src="" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <div class="form-floating">
+            <x-input id="email" type="email" name="email" value="superadmin@my-cms.local" required autofocus/>
+            <label for="email">{{__('Email')}}</label>
         </div>
-    </div>
-    <x-slot name="scripts">
-        <script src="{{ asset("js/sb-admin-2.min.js") }}"></script>
-    </x-slot>
-</x-app>
+        <div class="form-floating">
+            <x-input id="password"
+                     type="password"
+                     name="password"
+                     value="superadmin123"
+                     required autocomplete="current-password"/>
+            <label for="password">{{__('Password')}}</label>
+        </div>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> {{ __('Remember me') }}
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">{{ __('Log in') }}</button>
+    </form>
+
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')"/>
+
+    <!-- Validation Errors -->
+    <x-auth-validation-errors class="mb-4" :errors="$errors"/>
+
+</div>
+<script src="https://kit.fontawesome.com/9562824dba.js" crossorigin="anonymous"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+</body>
+</html>
+
