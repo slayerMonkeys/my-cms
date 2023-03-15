@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Enums\Permissions\PostPermissions;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -18,19 +19,7 @@ class PostPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
-    }
-
-    /**
-     * Determine whether the user can view the model
-     *
-     * @param User $user
-     * @param Post $post
-     * @return bool
-     */
-    public function view(User $user, Post $post): bool
-    {
-        return true;
+        return $user->hasPermission(PostPermissions::VIEW_ANY_POSTS);
     }
 
     /**
@@ -41,7 +30,7 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return $user->is($user);
+        return $user->hasPermission(PostPermissions::CREATE_POSTS);
     }
 
     /**
@@ -53,7 +42,8 @@ class PostPolicy
      */
     public function update(User $user, Post $post): bool
     {
-        return $user->id === $post->user_id;
+        return $user->hasPermission(PostPermissions::UPDATE_POSTS) ||
+            ($user->hasPermission(PostPermissions::UPDATE_OWN_POSTS) && $user->id === $post->user_id);
     }
 
     /**
@@ -65,6 +55,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post): bool
     {
-        return $user->id === $post->user_id;
+        return $user->hasPermission(PostPermissions::DELETE_POSTS) ||
+            ($user->hasPermission(PostPermissions::DELETE_OWN_POSTS) && $user->id === $post->user_id);
     }
 }

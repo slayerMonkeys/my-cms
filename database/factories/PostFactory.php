@@ -16,7 +16,7 @@ class PostFactory extends Factory
             'user_id' => User::factory(),
             'title' => $this->faker->sentence(),
             'post_image' => $this->faker->imageUrl('900', '300'),
-            'body' => $this->faker->paragraph()
+            'body' => $this->faker->paragraphs(10, true)
         ];
     }
 }
