@@ -104,9 +104,11 @@ class RoleController extends Controller
      *
      * @param Role $role
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Role $role): RedirectResponse
     {
+        $this->authorize('delete', $role);
         $role->delete();
         return response()
             ->redirectTo(route('admin.roles.index'))
