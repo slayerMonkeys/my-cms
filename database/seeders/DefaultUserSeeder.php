@@ -15,22 +15,19 @@ class DefaultUserSeeder extends Seeder
         $superAdminUser = User::create([
             "name" => "the-super-administrator",
             "email" => "superadmin@my-cms.local",
-            "email_verified_at" => now(),
-            "password" => \Hash::make("superadmin123"),
+            "password" => "superadmin123",
             "remember_token" => Str::random(10),
         ]);
         $adminUser = User::create([
             "name" => "the-administrator",
             "email" => "admin@my-cms.local",
-            "email_verified_at" => now(),
-            "password" => \Hash::make("admin123"),
+            "password" => "admin123",
             "remember_token" => Str::random(10),
         ]);
         $user = User::create([
             "name" => "the-user",
             "email" => "user@my-cms.local",
-            "email_verified_at" => now(),
-            "password" => \Hash::make("user123"),
+            "password" => "user123",
             "remember_token" => Str::random(10),
         ]);
 
