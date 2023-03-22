@@ -23,8 +23,14 @@
     <form class="form-login" method="POST" action="{{ route('admin.doLogin') }}">
         @csrf
 
-        <img class="mb-4" src="" alt="" width="72" height="57">
+        <div class="d-flex justify-content-center align-items-center mb-4 fs-4 fw-bold">
+            <img src="{{ asset('/images/logo-my-cms.png') }}" alt="" width="80">
+            <span>My CMS</span>
+        </div>
+
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <x-auth-validation-errors class="mb-4" :errors="$errors"/>
 
         <div class="form-floating">
             <x-input id="email" type="email" name="email" value="superadmin@my-cms.local" required autofocus/>
@@ -50,7 +56,7 @@
     <x-auth-session-status class="mb-4" :status="session('status')"/>
 
     <!-- Validation Errors -->
-    <x-auth-validation-errors class="mb-4" :errors="$errors"/>
+
 
 </div>
 <script src="https://kit.fontawesome.com/9562824dba.js" crossorigin="anonymous"></script>

@@ -670,7 +670,6 @@ progress {
   margin-right: calc(-0.5 * var(--bs-gutter-x));
   margin-left: calc(-0.5 * var(--bs-gutter-x));
 }
-
 .row > * {
     flex-shrink: 0;
     width: 100%;
@@ -686,95 +685,72 @@ progress {
     grid-template-columns: repeat(var(--bs-columns, 12), 1fr);
     gap: var(--bs-gap, 1.5rem);
 }
-
 .grid .g-col-1 {
     grid-column: auto/span 1;
 }
-
 .grid .g-col-2 {
     grid-column: auto/span 2;
 }
-
 .grid .g-col-3 {
     grid-column: auto/span 3;
 }
-
 .grid .g-col-4 {
     grid-column: auto/span 4;
 }
-
 .grid .g-col-5 {
     grid-column: auto/span 5;
 }
-
 .grid .g-col-6 {
     grid-column: auto/span 6;
 }
-
 .grid .g-col-7 {
     grid-column: auto/span 7;
 }
-
 .grid .g-col-8 {
     grid-column: auto/span 8;
 }
-
 .grid .g-col-9 {
     grid-column: auto/span 9;
 }
-
 .grid .g-col-10 {
     grid-column: auto/span 10;
 }
-
 .grid .g-col-11 {
     grid-column: auto/span 11;
 }
-
 .grid .g-col-12 {
     grid-column: auto/span 12;
 }
-
 .grid .g-start-1 {
     grid-column-start: 1;
 }
-
 .grid .g-start-2 {
     grid-column-start: 2;
 }
-
 .grid .g-start-3 {
     grid-column-start: 3;
 }
-
 .grid .g-start-4 {
     grid-column-start: 4;
 }
-
 .grid .g-start-5 {
     grid-column-start: 5;
 }
-
 .grid .g-start-6 {
     grid-column-start: 6;
 }
-
 .grid .g-start-7 {
     grid-column-start: 7;
 }
-
 .grid .g-start-8 {
     grid-column-start: 8;
 }
-
 .grid .g-start-9 {
     grid-column-start: 9;
 }
-
 .grid .g-start-10 {
     grid-column-start: 10;
 }
-
 .grid .g-start-11 {
     grid-column-start: 11;
 }
@@ -11840,13 +11816,13 @@ textarea.form-control-lg {
     display: table-row !important;
   }
 
-  .d-print-table-cell {
-    display: table-cell !important;
-  }
+    .d-print-table-cell {
+        display: table-cell !important;
+    }
 
-  .d-print-flex {
-    display: flex !important;
-  }
+    .d-print-flex {
+        display: flex !important;
+    }
 
     .d-print-inline-flex {
         display: inline-flex !important;
@@ -11856,7 +11832,6 @@ textarea.form-control-lg {
         display: none !important;
     }
 }
-
 .form-login-container {
     display: flex;
     align-items: center;
